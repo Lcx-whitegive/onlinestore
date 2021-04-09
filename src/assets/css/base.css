@@ -32,7 +32,9 @@ a {
   color: var(--color-text);
   text-decoration: none;
 }
-
+ul, ol, dl {
+  list-style: none;
+}
 
 .clear-fix::after {
   clear: both;

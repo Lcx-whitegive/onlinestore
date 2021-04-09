@@ -1,7 +1,9 @@
 <template>
   <div id="app">
     <main-tab-bar />
-    <router-view/>
+    <keep-alive>
+      <router-view/>
+    </keep-alive>
   </div>
 </template>
 
@@ -20,5 +22,6 @@
     bottom: 0;
     left: 0;
     right: 0;
+    z-index: 100;
   }
 </style>
