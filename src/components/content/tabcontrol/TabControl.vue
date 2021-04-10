@@ -28,7 +28,6 @@
     },
     methods: {
         change(index) {
-            console.log('zhixingle ');
             this.currentIndex = index
             this.$emit('changeTab', index)
         }
