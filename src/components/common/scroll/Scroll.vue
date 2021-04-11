@@ -26,6 +26,9 @@
         }
     },
     methods: {
+        scrollTo(x, y, time) {
+            this.scroll.scrollTo(x, y, time)
+        },
         backToTop() {
             this.scroll.scrollTo(0, 0, 800)
         },

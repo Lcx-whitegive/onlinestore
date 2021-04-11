@@ -32,6 +32,7 @@
     methods: {
         changeTab(index) {
             this.currentTabIndex = index
+            this.$emit('navBarClick', index)
         },
         goBack() {
             this.$router.back()
