@@ -38,7 +38,6 @@ import NavBar from 'components/common/navbar/NavBar'
 import TabControl from 'components/content/tabcontrol/TabControl'
 import GoodsList from 'components/content/goodslist/GoodsList'
 import Scroll from 'components/common/scroll/Scroll'
-import BackTop from 'components/content/backtop/BackTop'
 
 import HomeSwiper from './childrencomponents/HomeSwiper'
 import HomeRecommend from './childrencomponents/HomeRecommend'
@@ -48,9 +47,11 @@ import { debounce } from 'common/utils'
 
 import { getHomeMultidata, getHomeGoods } from 'network/home'
 
+import { backToTop } from 'common/mixins'
+
   export default {
     name: 'Home',
-    components: { NavBar, HomeSwiper, HomeRecommend, Feature, TabControl, GoodsList, Scroll, BackTop },
+    components: { NavBar, HomeSwiper, HomeRecommend, Feature, TabControl, GoodsList, Scroll },
     data() {
       return {
         banners: [],
@@ -71,7 +72,6 @@ import { getHomeMultidata, getHomeGoods } from 'network/home'
         },
         currentType: 'pop',
         isShowTabControl: false,
-        isShowBackTop: false,
       }
     },
     computed: {
@@ -116,9 +116,6 @@ import { getHomeMultidata, getHomeGoods } from 'network/home'
         this.isShowBackTop = (-position.y) > 1000
         this.isShowTabControl = (-position.y) > this.$refs.tabControl.$el.offsetTop
       },
-      backToTop() {
-        this.$refs.scroll.backToTop()
-      },
       pullingUp() {
         // console.log(this.goods[this.currentType].page);
         // console.log("上拉加载更多");
@@ -134,7 +131,8 @@ import { getHomeMultidata, getHomeGoods } from 'network/home'
       this.$bus.$on('imgLoaded', () => {
         refresh()
       })
-    }
+    },
+    mixins: [backToTop]
   }
 </script>
 
